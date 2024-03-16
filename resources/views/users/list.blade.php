@@ -27,12 +27,12 @@
                             <tbody>
                                 @forelse ($users as $user)
                                     <tr>
-                                        <td class="border px-4 py-2">{{ $user->name }}</td>
+                                        <td class="border px-4 py-2">{{ $user->name }}
+                                        </td>
                                         <td class="border px-4 py-2">{{ $user->email }}</td>
                                         <td class="border px-4 py-2">
-                                            <img src="{{ asset('images/' . $user->image) }}" alt="No image"
+                                            <img src="{{ asset('storage/images/' . $user->image) }}" alt="No image"
                                                 srcset="">
-
                                         </td>
                                         <td class="border px-4 py-2">
                                             <a class="hover:underline text-emerald-500" href="{{route('users.show',$user->id)}}">View</a> |

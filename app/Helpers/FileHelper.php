@@ -16,7 +16,8 @@ class FileHelper
             $imageName = time() . uniqid() . '.' . $imageFile->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $image = $manager->read($imageFile);
-            $image->resize(250, 250)->save('images/' . $imageName, 50);
+            $path = storage_path('app/public/images/');
+            $image->resize(250, 250)->save($path . $imageName, 50);
         }
         return $imageName;
     }
