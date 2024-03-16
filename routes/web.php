@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TrashedUserController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,6 +17,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('users', UserController::class);
+    Route::get('trashed-users', [TrashedUserController::class,'list'])->name('trashedUsers.list');
+    Route::get('trashed-restore/{id}', [TrashedUserController::class,'restore'])->name('trashedUsers.restore');
+    Route::delete('trashed-permanent-delete/{id}', [TrashedUserController::class,'permanentDelete'])->name('trashedUsers.permanentDelete');
 });
 
 require __DIR__.'/auth.php';
