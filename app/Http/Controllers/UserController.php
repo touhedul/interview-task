@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Services\UserService;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -54,7 +53,6 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, string $id)
     {
-
         $this->userService->update($request, $id);
         return redirect()->route('users.index');
     }
@@ -62,7 +60,6 @@ class UserController extends Controller
 
     public function destroy(string $id)
     {
-
         $this->userService->delete($id);
         return redirect()->route('users.index');
     }

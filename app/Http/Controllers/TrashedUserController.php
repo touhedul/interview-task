@@ -20,12 +20,13 @@ class TrashedUserController extends Controller
     }
 
 
+
     public function restore($id)
     {
-        
         $this->userService->trashedUserRestore($id);
         return redirect()->route('trashedUsers.list');
     }
+
 
 
     public function permanentDelete($id)

@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 class UserService implements UserInterface
 {
 
-
     public function list()
     {
         return User::where('id', '!=', auth()->id())->latest()->get();
