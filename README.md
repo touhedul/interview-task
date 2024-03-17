@@ -7,7 +7,7 @@ This project is built with Laravel 11.
 
 Ensure the following prerequisites are met before proceeding with the installation:
 
-PHP 8.2 with the GD extension enabled
+PHP 8.2 with the GD extension enabled,
 MySQL
 
 ## Installation Instructions
