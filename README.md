@@ -13,42 +13,42 @@ MySQL
 ## Installation Instructions
 Follow these steps to set up and run the project:
 
-Clone the Repository:
+1.Clone the Repository:
 git clone https://github.com/touhedul/interview-task.git
 
-Navigate to the Project Directory:
+2.Navigate to the Project Directory:
 cd interview-task
 
-Install Dependencies:
+3.Install Dependencies:
 composer install
 
-Copy Environment Configuration:
+4.Copy Environment Configuration:
 Duplicate the .env.example file and rename it to .env.
 
-Create a Database:
+5.Create a Database:
 Set up a MySQL database for the project.
 
-Set Database Credentials:
+6.Set Database Credentials:
 Configure the .env file with appropriate database credentials.
 
-Generate Application Key:
+7.Generate Application Key:
 php artisan key:generate
 
-Run Migrations and Seeders:
+8.Run Migrations and Seeders:
 php artisan migrate --seed
 
-Create Symbolic Link for Storage:
+9.Create Symbolic Link for Storage:
 php artisan storage:link
 
-Serve the Application:
+10.Serve the Application:
 php artisan serve
 
-Install Frontend Dependencies:
+### Install Frontend Dependencies:
 
-Open a new terminal window and execute:
+1.Open a new terminal window and execute:
 npm install
 
-Compile Frontend Assets:
+2.Compile Frontend Assets:
 npm run dev
 
 
