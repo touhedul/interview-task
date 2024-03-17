@@ -13,7 +13,7 @@
                         <a class="text-red-500 text-xl" href="#">Trashed user list</a>
                         <br>
                         <br>
-                        <div class="max-w-xl">
+                        <div class="max-w-6xl">
 
                             <div class="overflow-x-auto">
                                 <table class="table-auto w-full">
@@ -21,6 +21,7 @@
                                         <tr>
                                             <th class="border px-4 py-2">Name</th>
                                             <th class="border px-4 py-2">Email</th>
+                                            <th class="border px-4 py-2">Location</th>
                                             <th class="border px-4 py-2">Photo</th>
                                             <th class="border px-4 py-2">Action</th>
                                         </tr>
@@ -30,10 +31,12 @@
                                             <tr>
                                                 <td class="border px-4 py-2">{{ $user->name }}</td>
                                                 <td class="border px-4 py-2">{{ $user->email }}</td>
+                                                <td class="border px-4 py-2">{{ implode(",",$user->addresses->pluck('location')->toArray()) }}</td>
                                                 <td class="border px-4 py-2">
+                                                    @if($user->image)
                                                     <img src="{{ asset('storage/images/' . $user->image) }}"
                                                         alt="No image" srcset="">
-
+                                                    @endif
                                                 </td>
                                                 <td class="border px-4 py-2">
                                                     <a class="hover:underline text-emerald-500"

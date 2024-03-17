@@ -20,7 +20,8 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->userService->list();
-        return view('users.list',compact('users'));
+        $users->load('addresses');
+        return view('users.list', compact('users'));
     }
 
 
@@ -40,21 +41,21 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = $this->userService->getById($id);
-        return view('users.show',compact('user'));
+        return view('users.show', compact('user'));
     }
 
 
     public function edit(string $id)
     {
         $user = $this->userService->getById($id);
-        return view('users.edit',compact('user'));
+        return view('users.edit', compact('user'));
     }
 
 
     public function update(UserUpdateRequest $request, string $id)
     {
 
-        $this->userService->update($request,$id);
+        $this->userService->update($request, $id);
         return redirect()->route('users.index');
     }
 
@@ -65,6 +66,4 @@ class UserController extends Controller
         $this->userService->delete($id);
         return redirect()->route('users.index');
     }
-
-
 }

@@ -17,22 +17,31 @@
                                 <!-- Name -->
                                 <div>
                                     <x-input-label for="name" :value="__('Name')" />
-                                    <x-text-input disabled id="name" class="block mt-1 w-full" type="text" name="name"
-                                        :value="$user->name" required autofocus autocomplete="name" />
+                                    <x-text-input disabled id="name" class="block mt-1 w-full" type="text"
+                                        name="name" :value="$user->name" required autofocus autocomplete="name" />
                                 </div>
 
                                 <!-- Email Address -->
                                 <div class="mt-4">
                                     <x-input-label for="email" :value="__('Email')" />
-                                    <x-text-input disabled id="email" class="block mt-1 w-full" type="email" name="email"
-                                        :value="$user->email" required autocomplete="username" />
+                                    <x-text-input disabled id="email" class="block mt-1 w-full" type="email"
+                                        name="email" :value="$user->email" required autocomplete="username" />
                                 </div>
 
+                                <!-- location  -->
+                                <div class="mt-4">
+                                    <x-input-label for="location" :value="__('Location')" />
+                                    <x-text-input disabled id="location" class="block mt-1 w-full" type="text"
+                                        name="location" :value="implode(',', $user->addresses->pluck('location')->toArray())" required autocomplete="username" />
+                                </div>
+
+                                @if($user->image)
                                 <!-- image Address -->
                                 <div class="mt-4">
                                     <x-input-label for="image" :value="__('Image')" />
-                                    <img src="{{ asset('images/' . $user->image) }}" /> <br>
+                                    <img src="{{ asset('storage/images/' . $user->image) }}" /> <br>
                                 </div>
+                                @endif
 
                             </form>
                         </div>

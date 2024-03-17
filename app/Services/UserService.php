@@ -2,11 +2,12 @@
 
 namespace App\Services;
 
+use App\Events\AddressEvent;
 use App\Helpers\FileHelper;
 use App\Interfaces\UserInterface;
 use App\Models\User;
-use Image;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class UserService implements UserInterface
 {
@@ -27,7 +28,12 @@ class UserService implements UserInterface
     public function store($request)
     {
         $image = (new FileHelper)->uploadImage($request);
-        return User::create(array_merge($request->validated(), ['image' => $image]));
+
+        $user = User::create(array_merge($request->all(), ['image' => $image]));
+
+        event(new AddressEvent($user));
+
+        return $user;
     }
 
 
@@ -43,6 +49,7 @@ class UserService implements UserInterface
             $user->password = Hash::make($request->password);
         }
         $user->save();
+        event(new AddressEvent($user));
         return $user;
     }
 
