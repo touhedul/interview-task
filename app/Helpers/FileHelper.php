@@ -17,6 +17,9 @@ class FileHelper
             $manager = new ImageManager(new Driver());
             $image = $manager->read($imageFile);
             $path = storage_path('app/public/images/');
+            if (!file_exists($path)) {
+                mkdir($path, 666, true);
+            }
             $image->resize(90, 90)->save($path . $imageName, 50);
         }
         return $imageName;
